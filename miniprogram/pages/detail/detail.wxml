@@ -1,0 +1,58 @@
+<view wx:if="{{item}}" class="container">
+  <image wx:if="{{item.image_url}}" class="cover" src="{{item.image_url}}" mode="aspectFill" bindtap="onPreview" />
+
+  <view class="card info">
+    <view class="row">
+      <text class="tag {{item.type === 0 ? 'tag-lost' : ''}}">{{item.type === 0 ? '寻物' : '招领'}}</text>
+      <text class="title">{{item.title}}</text>
+    </view>
+
+    <view class="meta-row">
+      <text class="meta-label">分类</text>
+      <text>{{item.category}}</text>
+    </view>
+    <view class="meta-row" wx:if="{{item.location}}">
+      <text class="meta-label">地点</text>
+      <text>{{item.location}}</text>
+    </view>
+    <view class="meta-row">
+      <text class="meta-label">发布时间</text>
+      <text>{{timeText}}</text>
+    </view>
+  </view>
+
+  <view class="card info">
+    <text class="section-title">详细描述</text>
+    <text class="desc">{{item.description || '暂无描述'}}</text>
+  </view>
+
+    <!-- AI 匹配线索 -->
+    <view wx:if="{{matches.length > 0}}" class="card info match-section">
+    <view class="match-header">
+      <text class="ai-badge">✨ AI 找到了线索</text>
+    </view>
+    <view wx:for="{{matches}}" wx:key="id" class="match-item">
+      <view class="match-score">相似度 {{item.score}}%</view>
+      <view class="match-desc">{{item.explanation}}</view>
+      <view class="match-link" data-lost="{{item.lost_item_id}}" data-found="{{item.found_item_id}}" bindtap="goToMatch">查看对应物品 ></view>
+    </view>
+  </view>
+
+   <!-- 底部按钮区域 -->
+   <view class="action-footer">
+    <!-- 如果是寻物，显示“我捡到了” -->
+    <button wx:if="{{canContact}}" class="btn-primary contact-btn" bindtap="onContactOwner">
+      我捡到了，联系 TA
+    </button>
+
+    <!-- 原有的认领按钮（针对招领） -->
+    <button wx:if="{{canClaim && item.status === 0}}" class="btn-primary claim-btn" bindtap="onClaim">
+      这是我的，申请认领
+    </button>
+
+    <!-- 原有的关闭按钮 -->
+    <button class="btn-ghost close-btn" bindtap="onClose">
+      物品已找回 / 已归还
+    </button>
+  </view>
+</view>

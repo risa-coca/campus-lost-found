@@ -1,0 +1,146 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+.hero {
+  background: linear-gradient(135deg, #12A87A, #0E8A63);
+  padding: 40rpx 32rpx 48rpx;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+}
+
+.hero-title {
+  display: block;
+  color: #FFFFFF;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.hero-sub {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+  margin-top: 8rpx;
+  margin-bottom: 28rpx;
+}
+
+.search-bar {
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  padding: 8rpx 8rpx 8rpx 28rpx;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  height: 64rpx;
+}
+
+.search-btn {
+  background: #12A87A;
+  color: #FFFFFF;
+  font-size: 26rpx;
+  padding: 0 28rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border-radius: 32rpx;
+}
+
+.type-tabs {
+  display: flex;
+  margin: 28rpx 32rpx 0;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 8rpx;
+}
+
+.type-tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+  color: #6B7772;
+  border-radius: 16rpx;
+}
+
+.type-tab.active {
+  background: #E9F7F1;
+  color: #12A87A;
+  font-weight: 600;
+}
+
+.category-scroll {
+  white-space: nowrap;
+  margin-top: 24rpx;
+}
+
+.category-list {
+  display: inline-flex;
+  padding: 0 32rpx;
+  gap: 16rpx;
+}
+
+.category-chip {
+  padding: 12rpx 28rpx;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  font-size: 26rpx;
+  color: #6B7772;
+}
+
+.category-chip.active {
+  background: #12A87A;
+  color: #FFFFFF;
+}
+
+.list {
+  padding: 24rpx 24rpx 0;
+}
+
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 60rpx;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 52rpx;
+  background: #12A87A;
+  color: #FFFFFF;
+  font-size: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12rpx 32rpx rgba(18, 168, 122, 0.4);
+}
+
+.ai-fab {
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: #FFFFFF;
+  color: #12A87A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  border: 2rpx solid #E9F7F1;
+  z-index: 999; /* 保证在最上层 */
+  
+  /* 松手后回弹的过渡动画 */
+  transition: left 0.3s ease, top 0.3s ease; 
+}
+
+/* 拖动时去掉过渡动画，保证跟手 */
+.ai-fab.dragging {
+  transition: none;
+  transform: scale(1.1); 
+}
+
+.ai-icon {
+  font-size: 48rpx;
+  pointer-events: none; /* 让触摸事件穿透给父元素 */
+}
+

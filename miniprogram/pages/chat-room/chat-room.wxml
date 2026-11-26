@@ -1,0 +1,45 @@
+<view class="chat-container">
+  <scroll-view scroll-y class="chat-list" scroll-into-view="msg-bottom">
+    <view wx:for="{{messages}}" wx:key="id" class="msg-row {{item.sender_id === myId ? 'row-user' : 'row-ai'}}">
+     <!-- 对方的头像 -->
+     <block wx:if="{{item.sender_id !== myId}}">
+        <image wx:if="{{otherAvatar}}" class="avatar" src="{{otherAvatar}}" mode="aspectFill" />
+        <view wx:else class="avatar text-avatar bg-green">TA</view>
+      </block>
+
+      <!-- 气泡内容 -->
+      <view class="bubble {{item.is_image ? 'image-bubble' : ''}} {{item.sender_id === myId ? 'bubble-user' : 'bubble-ai'}}">
+        <image 
+          wx:if="{{item.is_image}}" 
+          class="chat-img" 
+          src="{{item.content}}" 
+          mode="widthFix" 
+          bindtap="previewImage" 
+          data-url="{{item.content}}" 
+        />
+        <text wx:else user-select>{{item.content}}</text>
+      </view>
+
+      <!-- 自己的头像 -->
+      <block wx:if="{{item.sender_id === myId}}">
+        <image wx:if="{{myAvatar}}" class="avatar" src="{{myAvatar}}" mode="aspectFill" />
+        <view wx:else class="avatar text-avatar bg-gray">我</view>
+      </block>
+
+    </view>
+    
+    <view id="msg-bottom" style="height: 20rpx;"></view>
+  </scroll-view>
+
+  <view class="input-bar">
+    <input class="input-box" placeholder="约定交接时间地点..." value="{{inputValue}}" bindinput="onInput" confirm-type="send" bindconfirm="onSend" adjust-position="{{false}}" />
+    <view class="icon-btn" bindtap="toggleEmoji">😀</view>
+    <view class="icon-btn" bindtap="onChooseImage">＋</view>
+    <button class="send-btn" bindtap="onSend" disabled="{{!inputValue}}">发送</button>
+  </view>
+
+    <!-- 表情包面板 -->
+    <view class="emoji-panel" wx:if="{{showEmoji}}">
+    <view class="emoji-item" wx:for="{{emojis}}" wx:key="*this" bindtap="onSelectEmoji" data-emoji="{{item}}">{{item}}</view>
+  </view>
+</view>

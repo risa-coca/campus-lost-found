@@ -1,0 +1,15 @@
+<view class="item-card" bindtap="onTap">
+  <image wx:if="{{item.image_url}}" class="thumb" src="{{item.image_url}}" mode="aspectFill" />
+  <view wx:else class="thumb thumb-placeholder">{{item.category}}</view>
+  <view class="body">
+    <view class="row">
+      <text class="tag {{item.type === 0 ? 'tag-lost' : ''}}">{{item.type === 0 ? '寻物' : '招领'}}</text>
+      <text class="title">{{item.title}}</text>
+    </view>
+    <text class="desc">{{item.description || '暂无描述'}}</text>
+    <view class="meta">
+      <text wx:if="{{item.location}}">📍 {{item.location}}</text>
+      <text class="time">{{timeText}}</text>
+    </view>
+  </view>
+</view>

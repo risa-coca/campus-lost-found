@@ -1,0 +1,81 @@
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110rpx;
+  background: white;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+  z-index: 999;
+}
+.tab-bar-border {
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0; top: 0; width: 100%; height: 1px;
+}
+.tab-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8A8F8C;
+  position: relative;
+}
+
+/* 图标样式 */
+.icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 6rpx;
+}
+.text {
+  font-size: 20rpx;
+}
+
+/* 中间凸起的红色大按钮 */
+.publish-btn {
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #FF5E5E, #FF3B30);
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -30rpx; /* 向上凸出 */
+  box-shadow: 0 6rpx 16rpx rgba(255, 59, 48, 0.3);
+  border: 8rpx solid #FFFFFF; /* 白色描边增强凸出感 */
+}
+.plus {
+  color: #FFF;
+  font-size: 60rpx;
+  font-weight: 300;
+  line-height: 1;
+  margin-top: -6rpx;
+}
+
+.icon-box {
+  position: relative; /* 配合红点定位 */
+  font-size: 40rpx;
+  margin-bottom: 6rpx;
+}
+.tab-red-dot {
+  position: absolute;
+  top: -4rpx;
+  right: -16rpx;
+  background: #FF3B30;
+  color: #FFF;
+  font-size: 18rpx;
+  height: 28rpx;
+  min-width: 28rpx;
+  border-radius: 14rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #FFFFFF;
+}

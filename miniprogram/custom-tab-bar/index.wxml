@@ -1,0 +1,31 @@
+<view class="tab-bar">
+  <view class="tab-bar-border"></view>
+  <view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" bindtap="switchTab">
+    
+    <!-- 中间凸起的发布按钮 -->
+    <block wx:if="{{item.isPublish}}">
+      <view class="publish-btn">
+        <text class="plus">+</text>
+      </view>
+    </block>
+    
+<!-- 2. 普通的 Tab 图标和文字 -->
+<block wx:else>
+      <!-- 图标盒子（相对定位，用来包裹红点） -->
+      <view class="icon-box">
+        <image class="icon" src="{{selected === index ? item.selectedIconPath : item.iconPath}}" />
+        
+        <!-- 🔥 红点（只有“消息”且有未读数时才显示） -->
+        <view wx:if="{{item.text === '消息' && unreadTotal > 0}}" class="tab-red-dot">
+          {{unreadTotal > 99 ? '99+' : unreadTotal}}
+        </view>
+      </view>
+      
+      <!-- 文字 -->
+      <view class="text" style="color: {{selected === index ? '#12A87A' : '#8A8F8C'}}">
+        {{item.text}}
+      </view>
+    </block>
+    
+  </view>
+</view>

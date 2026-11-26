@@ -1,0 +1,20 @@
+.container { padding: 32rpx; }
+.group { margin-bottom: 40rpx; }
+.cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #F0F3F1;
+}
+.cell:last-child { border-bottom: none; }
+.arrow { color: #C8D3CE; }
+.btn-logout {
+  background: #FFFFFF;
+  color: #E5533D;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 24rpx 0;
+}

@@ -1,0 +1,28 @@
+<view class="container">
+  <view wx:for="{{conversations}}" wx:key="index" class="msg-item" data-id="{{item.other_id}}" data-item="{{item.item_id}}" data-avatar="{{item.avatar_url}}" bindtap="goToChat">
+    
+    <!-- 左侧头像 -->
+    <view class="avatar-box">
+      <image wx:if="{{item.avatar_url}}" class="avatar-img" src="{{item.avatar_url}}" mode="aspectFill" />
+      <view wx:else class="avatar">校</view>
+       <!-- 未读红点 -->
+       <view wx:if="{{item.unread_count > 0}}" class="red-dot">
+        {{item.unread_count > 99 ? '99+' : item.unread_count}}
+      </view>
+    </view>
+
+    <!-- 中间内容 -->
+    <view class="content">
+      <view class="header">
+        <text class="name">{{item.other_name}}</text>
+        <text class="time">{{item.timeText}}</text>
+      </view>
+      <view class="last-msg">
+        <text class="item-tag">关于：{{item.item_title}}</text>
+        <text class="msg-text">{{item.last_msg}}</text>
+      </view>
+    </view>
+    
+  </view>
+  <view wx:if="{{conversations.length === 0}}" class="empty">暂无消息，快去沟通吧~</view>
+</view>

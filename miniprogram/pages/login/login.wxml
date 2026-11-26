@@ -1,0 +1,40 @@
+<view class="container">
+  <!-- 顶部切换 -->
+  <view class="tabs">
+    <view class="tab {{mode === 'login' ? 'active' : ''}}" data-mode="login" bindtap="switchMode">账号登录</view>
+    <view class="tab {{mode === 'register' ? 'active' : ''}}" data-mode="register" bindtap="switchMode">注册账号</view>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-card">
+    <view class="input-group">
+      <text class="label">账号</text>
+      <input class="input" placeholder="请输入账号" data-field="username" bindinput="onInput" />
+    </view>
+    
+    <view class="input-group" wx:if="{{mode === 'register'}}">
+      <text class="label">昵称</text>
+      <input class="input" placeholder="请输入昵称" data-field="nickname" bindinput="onInput" />
+    </view>
+
+    <view class="input-group">
+      <text class="label">密码</text>
+      <input class="input" type="password" placeholder="请输入密码" data-field="password" bindinput="onInput" />
+    </view>
+
+    <button wx:if="{{mode === 'login'}}" class="btn-primary" bindtap="onAccountLogin" loading="{{loading}}">登 录</button>
+    <button wx:if="{{mode === 'register'}}" class="btn-primary" bindtap="onRegister" loading="{{loading}}">注 册</button>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider">
+    <view class="line"></view>
+    <text class="text">其他登录方式</text>
+    <view class="line"></view>
+  </view>
+
+  <!-- 微信登录按钮 -->
+  <button class="btn-wx" bindtap="onWxLogin" loading="{{loading}}">
+    <text class="wx-icon">微</text> 微信授权登录
+  </button>
+</view>

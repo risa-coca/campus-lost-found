@@ -1,0 +1,73 @@
+<view class="chat-container">
+  <scroll-view scroll-y class="chat-list" scroll-into-view="msg-bottom">
+    
+    <!-- 消息循环 -->
+    <view wx:for="{{messages}}" wx:key="index" class="msg-row {{item.role === 'ai' ? 'row-ai' : 'row-user'}}">
+      
+      <!-- 对方（AI）头像 -->
+      <image wx:if="{{item.role === 'ai'}}" class="avatar" src="/images/ai-avatar.gif" mode="aspectFill" />
+      
+      <view class="msg-content-box">
+        <!-- 气泡内容：支持图片和文字 -->
+        <view class="bubble {{item.is_image ? 'image-bubble' : ''}} {{item.role === 'ai' ? 'bubble-ai' : 'bubble-user'}}">
+          <image wx:if="{{item.is_image}}" class="chat-img" src="{{item.content}}" mode="widthFix" bindtap="previewImage" data-url="{{item.content}}" />
+          <text wx:else user-select>{{item.content}}</text>
+        </view>
+
+        <!-- 匹配结果卡片列表 -->
+        <view wx:if="{{item.matches && item.matches.length > 0}}" class="match-card-list">
+          <view 
+            class="match-card" 
+            wx:for="{{item.matches}}" 
+            wx:for-item="match" 
+            wx:key="id" 
+            data-id="{{match.id}}" 
+            bindtap="goToDetail"
+          >
+            <image wx:if="{{match.image_url}}" class="match-img" src="{{match.image_url}}" mode="aspectFill" />
+            <view wx:else class="match-img-placeholder">无图</view>
+            <view class="match-info">
+              <view class="match-title">
+                <text class="tag {{match.type === 0 ? 'tag-lost' : ''}}">{{match.type === 0 ? '寻物' : '招领'}}</text>
+                {{match.title}}
+              </view>
+              <view class="match-desc">{{match.description || '暂无描述'}}</view>
+              <view class="match-loc">📍 {{match.location || '未知地点'}}</view>
+            </view>
+            <view class="match-arrow">></view>
+          </view>
+        </view>
+      </view> <!-- 🔥 这里闭合 msg-content-box -->
+
+      <!-- 己方（用户）头像 -->
+      <block wx:if="{{item.role === 'user'}}">
+        <image wx:if="{{myAvatar}}" class="avatar" src="{{myAvatar}}" mode="aspectFill" />
+        <view wx:else class="avatar user-avatar">我</view> 
+      </block>
+      
+    </view>
+    
+    <!-- 加载中提示 -->
+    <view wx:if="{{loading}}" class="msg-row row-ai">
+      <image class="avatar" src="/images/ai-avatar.gif" mode="aspectFill" />
+      <view class="bubble bubble-ai">思考中...</view>
+    </view>
+    <view id="msg-bottom" style="height: 300rpx;"></view>
+  </scroll-view>
+
+  <!-- 底部输入区域 -->
+  <view class="input-bar">
+    <input 
+      class="input-box" 
+      placeholder="问问 AI 有没有线索..." 
+      value="{{inputValue}}" 
+      bindinput="onInput" 
+      confirm-type="send" 
+      bindconfirm="onSend" 
+      adjust-position="{{true}}"
+    />
+    <!-- 只保留加号发图 -->
+    <view class="icon-btn" bindtap="onChooseImage">＋</view>
+    <button class="send-btn" bindtap="onSend" disabled="{{loading || !inputValue}}">发送</button>
+  </view>
+</view>

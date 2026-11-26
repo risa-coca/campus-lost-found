@@ -1,0 +1,44 @@
+<view class="container">
+  <!-- 我发出的申请 -->
+  <view wx:if="{{type === 'sent'}}">
+    <view wx:for="{{claims}}" wx:key="index" class="card claim-card">
+      <view class="claim-title">{{item.item.title}}</view>
+      <view class="claim-status status-{{item.claim.status}}">
+        状态：{{item.claim.status === 0 ? '待审核' : (item.claim.status === 1 ? '已同意，请协商交接' : (item.claim.status === 2 ? '已拒绝' : '已交接完成'))}}
+      </view>
+      
+      <block wx:if="{{item.claim.status === 1}}">
+        <view class="action-row">
+          <!-- 跳转聊天，传物品主人的ID -->
+          <button size="mini" class="btn-msg" data-other="{{item.item.user_id}}" data-item="{{item.item.id}}" bindtap="goToChatRoom">💬 发消息沟通</button>
+          <button size="mini" class="btn-approve" data-id="{{item.claim.id}}" bindtap="completeClaim">确认已拿到</button>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 我收到的申请 -->
+  <view wx:if="{{type === 'received'}}">
+    <view wx:for="{{claims}}" wx:key="index" class="card claim-card">
+      <view class="claim-title">物品：{{item.item.title}}</view>
+      <view class="claim-answer">认领者验证信息：{{item.claim.answers}}</view>
+      
+      <view class="claim-actions" wx:if="{{item.claim.status === 0}}">
+        <button size="mini" class="btn-reject" data-id="{{item.claim.id}}" data-action="reject" bindtap="handleClaim">拒绝</button>
+        <button size="mini" class="btn-approve" data-id="{{item.claim.id}}" data-action="approve" bindtap="handleClaim">同意交接</button>
+      </view>
+      
+      <block wx:elif="{{item.claim.status === 1}}">
+        <view class="action-row">
+          <!-- 跳转聊天，传认领者的ID -->
+          <button size="mini" class="btn-msg" data-other="{{item.claim.claimant_id}}" data-item="{{item.item.id}}" bindtap="goToChatRoom">💬 发消息沟通</button>
+          <button size="mini" class="btn-approve" data-id="{{item.claim.id}}" bindtap="completeClaim">确认已交还</button>
+        </view>
+      </block>
+      
+      <view wx:else class="claim-status">状态：{{item.claim.status === 2 ? '已拒绝' : '已交接完成'}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{claims.length === 0 && !loading}}" class="empty">暂无相关记录</view>
+</view>

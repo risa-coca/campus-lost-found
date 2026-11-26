@@ -1,0 +1,62 @@
+page {
+  background: #F5F7F6;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  color: #1F2A26;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 6rpx 24rpx rgba(18, 168, 122, 0.06);
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: #12A87A;
+  color: #FFFFFF;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 22rpx 0;
+  text-align: center;
+  border: none;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-ghost {
+  background: #E9F7F1;
+  color: #12A87A;
+  border-radius: 48rpx;
+  font-size: 28rpx;
+  padding: 18rpx 0;
+  text-align: center;
+  border: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6rpx 18rpx;
+  border-radius: 24rpx;
+  font-size: 22rpx;
+  background: #E9F7F1;
+  color: #12A87A;
+}
+
+.tag-lost {
+  background: #FDECEC;
+  color: #E5533D;
+}
+
+.empty {
+  padding: 120rpx 0;
+  text-align: center;
+  color: #9AA5A0;
+  font-size: 28rpx;
+}

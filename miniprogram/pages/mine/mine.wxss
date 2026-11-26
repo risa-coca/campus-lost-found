@@ -1,0 +1,98 @@
+.page { padding: 32rpx; }
+/* 顶部卡片容器：强制靠左 */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important; /* 强制靠左 */
+  background: linear-gradient(135deg, #12A87A, #0E8A63);
+  border-radius: 28rpx;
+  padding: 40rpx 32rpx;
+  color: #FFFFFF;
+  margin-bottom: 40rpx;
+  box-sizing: border-box;
+  width: 100%; /* 确保撑满 */
+}
+
+/* 头像按钮：暴力重置微信原生样式，去除一切居中 */
+.avatar-btn {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  width: 120rpx !important;
+  height: 120rpx !important;
+  border-radius: 60rpx !important;
+  overflow: hidden !important;
+  flex-shrink: 0;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  line-height: normal !important; /* 关键：重置行高防偏移 */
+}
+.avatar-btn::after { border: none !important; }
+
+.avatar-img, .avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+
+.avatar {
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #FFF;
+}
+
+/* 右侧文字信息区：强制内部元素左对齐 */
+.info {
+  margin-left: 28rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important; /* 强制文字靠左 */
+  text-align: left !important;
+}
+
+/* 昵称输入框：去除默认居中 */
+.name-input {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: left !important;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0;
+  margin: 0;
+}
+
+/* 副标题 */
+.sub {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-top: 12rpx;
+  text-align: left !important;
+}
+
+.menu-list {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  margin-bottom: 24rpx;
+  padding: 0 32rpx;
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36rpx 0;
+  border-bottom: 1rpx solid #F0F3F1;
+  font-size: 30rpx;
+  color: #1F2A26;
+}
+.menu-item:last-child { border-bottom: none; }
+.arrow { color: #C8D3CE; font-family: 'Courier New', Courier, monospace;}

@@ -1,0 +1,66 @@
+.item-card {
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 24rpx rgba(18, 168, 122, 0.06);
+}
+
+.thumb {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 18rpx;
+  background: #E9F7F1;
+  flex-shrink: 0;
+}
+
+.thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #12A87A;
+  font-size: 24rpx;
+}
+
+.body {
+  flex: 1;
+  margin-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1F2A26;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.desc {
+  font-size: 24rpx;
+  color: #6B7772;
+  margin-top: 10rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #9AA5A0;
+  margin-top: 10rpx;
+}

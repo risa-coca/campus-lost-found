@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">拾光校园</text>
+    <text class="hero-sub">丢了别慌，捡到归还</text>
+    <view class="search-bar">
+      <input class="search-input" placeholder="搜索物品名称或描述" value="{{keyword}}" bindinput="onKeywordInput" confirm-type="search" bindconfirm="onSearch" />
+      <view class="search-btn" bindtap="onSearch">搜索</view>
+    </view>
+  </view>
+
+  <view class="type-tabs">
+    <view class="type-tab {{activeType === -1 ? 'active' : ''}}" data-type="-1" bindtap="onTypeTap">全部</view>
+    <view class="type-tab {{activeType === 0 ? 'active' : ''}}" data-type="0" bindtap="onTypeTap">寻物</view>
+    <view class="type-tab {{activeType === 1 ? 'active' : ''}}" data-type="1" bindtap="onTypeTap">招领</view>
+  </view>
+
+  <scroll-view scroll-x class="category-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="category-list">
+      <view wx:for="{{categories}}" wx:key="*this" class="category-chip {{activeCategory === item ? 'active' : ''}}" data-category="{{item}}" bindtap="onCategoryTap">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="list">
+    <item-card wx:for="{{items}}" wx:key="id" item="{{item}}" />
+    <view wx:if="{{items.length === 0 && !loading}}" class="empty">暂时没有相关物品</view>
+    <view wx:if="{{loading}}" class="empty">加载中...</view>
+    <view wx:if="{{finished && items.length > 0}}" class="empty">— 已经到底了 —</view>
+  </view>
+
+    <!-- AI 助手可拖动悬浮球 -->
+    <view 
+    class="ai-fab {{isDragging ? 'dragging' : ''}}" 
+    style="left: {{fabLeft}}px; top: {{fabTop}}px;"
+    bindtouchstart="onTouchStart"
+    catchtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+  >
+    <text class="ai-icon">✨</text>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+.container {
+  padding: 24rpx;
+}
+.empty {
+  padding: 120rpx 0;
+  text-align: center;
+  color: #9AA5A0;
+  font-size: 28rpx;
+}
