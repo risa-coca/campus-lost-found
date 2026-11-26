@@ -1,0 +1,21 @@
+# 小程序缓存、依赖
+node_modules/
+.DS_Store
+.vscode/
+.project.private.config.json
+
+# 压缩包、大文件
+*.zip
+*.rar
+*.7z
+*.pdf
+
+# 图片资源（如果不想上传截图）
+images/*.png
+images/*.jpg
+images/*.jpeg
+images/*.gif
+
+# 日志
+logs/
+*.log
